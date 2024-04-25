@@ -37,8 +37,8 @@ dependencies {
     implementation group: 'com.squareup.retrofit2', name: 'converter-gson', version: '2.9.0'
 
     // Database
+    implementation 'mysql:mysql-connector-java:8.0.28'
     runtimeOnly 'com.h2database:h2'
-    runtimeOnly 'com.mysql:mysql-connector-java'
 
     // JWT
     implementation 'io.jsonwebtoken:jjwt:0.9.1'
