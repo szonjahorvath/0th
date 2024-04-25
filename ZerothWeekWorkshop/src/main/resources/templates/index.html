@@ -1,1 +1,13 @@
-Hello!
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <title>Movie Web App</title>
+</head>
+<body>
+<h1>Wellcome to DB Movies</h1>
+<div th:if="${param.logout}">
+    You have been logged out.
+</div>
+<a th:href="@{/content}">Go to content</a>
+</body>
+</html>

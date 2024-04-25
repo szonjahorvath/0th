@@ -41,7 +41,7 @@ dependencies {
     runtimeOnly 'com.h2database:h2'
 
     // JWT
-    implementation 'io.jsonwebtoken:jjwt:0.9.1'
+    implementation 'io.jsonwebtoken:jjwt:0.10.6'
 
     // Model Mapper for DTO conversation
     implementation 'org.modelmapper:modelmapper:2.4.4'
