@@ -13,7 +13,7 @@ public class MainController {
         return "index";
     }
 
-    @GetMapping("/content")
+    @GetMapping("/user/content")
     public String content() {
         return "content";
     }
