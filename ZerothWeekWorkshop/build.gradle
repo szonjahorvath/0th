@@ -38,10 +38,13 @@ dependencies {
 
     // Database
     implementation 'mysql:mysql-connector-java:8.0.28'
+    runtimeOnly 'com.mysql:mysql-connector-j'
     runtimeOnly 'com.h2database:h2'
 
     // JWT
-    implementation 'io.jsonwebtoken:jjwt:0.10.6'
+    implementation 'io.jsonwebtoken:jjwt-api:0.11.5'
+    runtimeOnly 'io.jsonwebtoken:jjwt-impl:0.11.5'
+    runtimeOnly 'io.jsonwebtoken:jjwt-jackson:0.11.5'
 
     // Model Mapper for DTO conversation
     implementation 'org.modelmapper:modelmapper:2.4.4'
