@@ -9,7 +9,7 @@ public class DefaultProfileSetup {
     @Bean
     @Profile("!dev & !test")
     public String defaultActiveProfile() {
-        System.setProperty("spring.profiles.active", "dev");
-        return "prod";
+        System.setProperty("spring.profiles.active", "production");
+        return "production";
     }
 }

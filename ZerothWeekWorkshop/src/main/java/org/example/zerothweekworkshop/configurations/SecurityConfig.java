@@ -54,13 +54,15 @@ public class SecurityConfig {
                         .requestMatchers("/admin/**").authenticated()
                 ).formLogin(form -> form
                         .loginPage("/login")
-                        .defaultSuccessUrl("/content")
+                        .loginProcessingUrl("/perform_login")
+                        .defaultSuccessUrl("/user/content", true)
+                        .failureUrl("/login?error=true")
                         .permitAll()
                 ).logout(logout -> logout
                         .logoutSuccessUrl("/?logout")
                         .permitAll()
                 ).sessionManagement(sess -> sess
-                        .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+                        .sessionCreationPolicy(SessionCreationPolicy.IF_REQUIRED)
                 ).authenticationProvider(authenticationProvider()
                 ).addFilterBefore(filter, UsernamePasswordAuthenticationFilter.class)
                 .build();
