@@ -32,6 +32,16 @@ public class MainApiController {
         return service.addUser(user);
     }
 
+    /* For Postman in the JSON body:
+
+    {
+  "name": "user",
+  "password": "password",
+  "roles": "ROLE_USER"
+}
+
+    */
+
     @GetMapping("/user/userProfile")
     @PreAuthorize("hasAuthority('ROLE_USER')")
     public String userProfile() {
@@ -56,4 +66,13 @@ public class MainApiController {
             throw new UsernameNotFoundException("Invalid user request!");
         }
     }
+
+    /*
+    Checking in with postman:
+
+    {
+  "userName": "user",
+  "password": "password"
+}
+     */
 }
