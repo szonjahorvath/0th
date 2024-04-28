@@ -3,21 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" th:href="@{/styles/login.css}">
-    <title>Movie Web App - Login</title>
+    <link rel="stylesheet" th:href="@{/static/styles/signup.css}">
+    <title>Movie Web App - Signup page</title>
 </head>
 <body>
 <div th:if="${param.error}">
     Invalid username and password.
 </div>
-<form action="/perform_login" method="post">
+<form action="/addNewUser" method="post">
     <div><label> User Name : <input type="text" name="username"/> </label></div>
     <div><label> Password: <input type="password" name="password"/> </label></div>
-    <div><input type="submit" value="Sign In"/></div>
+    <div><input type="submit" value="Sign Up"/></div>
 </form>
-<p>Are you new?</p>
-<a class="btn" href="/signup">
-    Sign Up
-</a>
 </body>
 </html>
