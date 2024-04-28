@@ -3,6 +3,7 @@ package org.example.zerothweekworkshop.configurations;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.logging.HttpLoggingInterceptor;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import retrofit2.Retrofit;
@@ -12,6 +13,9 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class RetrofitConfig {
 
     private static final String BASE_URL = "https://api.themoviedb.org/3/";
+
+    @Value("${tmdb.api.key}")
+    private String apiKey;
 
     @Bean
     public Retrofit retrofit() {
@@ -24,7 +28,7 @@ public class RetrofitConfig {
             Request original = chain.request();
             // Suppose every request requires an API key as a query parameter
             Request request = original.newBuilder()
-                    .url(original.url().newBuilder().addQueryParameter("api_key", "your_api_key_here").build())
+                    .url(original.url().newBuilder().addQueryParameter("api_key", "apiKey").build())
                     .build();
             return chain.proceed(request);
         });
