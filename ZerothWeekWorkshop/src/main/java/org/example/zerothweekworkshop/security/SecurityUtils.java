@@ -14,9 +14,15 @@ public class SecurityUtils {
             SecureRandom secureRandom = new SecureRandom();
             keyGen.init(256, secureRandom);
             SecretKey secretKey = keyGen.generateKey();
-            return Base64.getEncoder().encodeToString(secretKey.getEncoded());
+            String result = Base64.getEncoder().encodeToString(secretKey.getEncoded());
+            System.out.println(result);
+            return result;
         } catch (NoSuchAlgorithmException e) {
             throw new RuntimeException("Error while generating secret key", e);
         }
+    }
+
+    public static void main(String[] args) {
+        generateSecretKey();
     }
 }

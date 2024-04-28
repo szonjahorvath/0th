@@ -6,6 +6,7 @@ import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
 import org.example.zerothweekworkshop.security.SecurityUtils;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 
@@ -18,11 +19,8 @@ import java.util.function.Function;
 @Component
 public class JwtTokenUtil {
 
-    private final String secretKey;
-
-    public JwtTokenUtil() {
-        this.secretKey = SecurityUtils.generateSecretKey();
-    }
+    @Value("${secret.key}")
+    private String secretKey;
 
     public String generateToken(String username) {
         Map<String, Object> claims = new HashMap<>();
