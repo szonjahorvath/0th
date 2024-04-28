@@ -1,15 +1,49 @@
 <!DOCTYPE html>
-
-<html lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>Movie Wee App - Content</title>
+    <link rel="stylesheet" type="text/css" href=/static/content.css >
+    <title>Movie Web App - Content</title>
 </head>
 <body>
-<h1>DB Movie Content   </h1>
-<form th:action="@{/logout}" method="post">
-    <div><input type="submit" value="Sign Out"/></div>
+<h1>DB Movie Content</h1>
 
+<table>
+    <thead>
+    <tr>
+        <th>Title</th>
+        <th>Genre</th>
+        <th>Release date</th>
+        <th>Length</th>
+        <th>Actors</th>
+        <th>Director</th>
+        <th>Rating</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="movie : ${movies}">
+        <td th:text="movie.title">1</td>
+        <td th:text="movie.genre">2</td>
+        <td th:date="movie.date">3</td>
+        <td th:text="movie.length">4</td>
+        <td th:text="movie.actors">5</td>
+        <td th:text="movie.director">6</td>
+        <td th:text="movie.rating">7</td>
+    </tr>
+    <tr th:each="movie : ${movies}">
+        <td th:text="movie.title">1</td>
+        <td th:text="movie.genre">2</td>
+        <td th:date="movie.date">3</td>
+        <td th:text="movie.length">4</td>
+        <td th:text="movie.actors">5</td>
+        <td th:text="movie.director">6</td>
+        <td th:text="movie.rating">7</td>
+    </tr>
+    </tbody>
+</table>
+
+<form th:action="@{/logout}" method="post">
+    <input type="submit" value="Sign out"/>
 </form>
+
 </body>
 </html>
