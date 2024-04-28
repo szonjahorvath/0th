@@ -1,0 +1,46 @@
+h1 {
+    text-align: center;
+    color: darkblue;
+}
+
+table {
+    margin: auto;
+}
+
+thead {
+    background-color: aquamarine;
+    color: darkblue;
+    font-weight: bold;
+    font-size: 18px;
+    border: 1px solid #39495d;
+    border-radius: 2px;
+}
+
+tbody td {
+    color: darkblue;
+    border: 1px solid #dddfe1;
+    font-size: 15px;
+    text-align: center;
+    border-radius: 2px;
+}
+
+tbody tr {
+    background-color: #efefef;
+}
+
+tbody tr:nth-child(odd) {
+    background-color: #ffffff;
+}
+
+form {
+    text-align: center;
+
+}
+
+input{
+    background-color: aquamarine;
+    color: darkblue;
+    font-weight: bold;
+    border: 1px solid #39495d;
+    border-radius: 5px;
+}
