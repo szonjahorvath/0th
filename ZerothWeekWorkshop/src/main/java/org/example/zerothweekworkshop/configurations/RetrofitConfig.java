@@ -14,9 +14,6 @@ public class RetrofitConfig {
 
     private static final String BASE_URL = "https://api.themoviedb.org/3/";
 
-    @Value("${tmdb.api.key}")
-    private String apiKey;
-
     @Bean
     public Retrofit retrofit() {
         OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
@@ -26,9 +23,8 @@ public class RetrofitConfig {
         httpClient.addInterceptor(logging);
         httpClient.addInterceptor(chain -> {
             Request original = chain.request();
-            // Suppose every request requires an API key as a query parameter
             Request request = original.newBuilder()
-                    .url(original.url().newBuilder().addQueryParameter("api_key", "apiKey").build())
+                    .url(original.url().newBuilder().build())
                     .build();
             return chain.proceed(request);
         });
