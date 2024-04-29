@@ -71,8 +71,8 @@ public class MainApiController {
     Checking in with postman:
 
     {
-  "userName": "user",
+  "username": "user",
   "password": "password"
-}
+} --> should generate a token like "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1c2VyIiwiaWF0IjoxNzE0MzA3NjU1LCJleHAiOjE3MTQzMDk0NTV9.9xBDRut3Jm2q9LmW99ecz0zrvhXwPqk4ILuC4qpXcfE"
      */
 }
