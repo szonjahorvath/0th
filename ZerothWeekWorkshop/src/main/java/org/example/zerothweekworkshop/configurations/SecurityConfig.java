@@ -49,7 +49,8 @@ public class SecurityConfig {
                                 "/",
                                 "/login",
                                 "/addNewUser",
-                                "/generateToken"
+                                "/generateToken",
+                                "signup"
                         ).permitAll()
                         .requestMatchers("/user/**").authenticated()
                         .requestMatchers("/admin/**").authenticated()

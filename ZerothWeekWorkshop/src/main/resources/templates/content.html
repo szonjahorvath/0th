@@ -10,33 +10,18 @@
 <table>
     <thead>
     <tr>
+        <th>id</th>
         <th>Title</th>
-        <th>Genre</th>
-        <th>Release date</th>
-        <th>Length</th>
-        <th>Actors</th>
-        <th>Director</th>
-        <th>Rating</th>
+        <th>Overview</th>
+        <th>Popularity</th>
     </tr>
     </thead>
     <tbody>
     <tr th:each="movie : ${movies}">
-        <td th:text="movie.title">1</td>
-        <td th:text="movie.genre">2</td>
-        <td th:date="movie.date">3</td>
-        <td th:text="movie.length">4</td>
-        <td th:text="movie.actors">5</td>
-        <td th:text="movie.director">6</td>
-        <td th:text="movie.rating">7</td>
-    </tr>
-    <tr th:each="movie : ${movies}">
-        <td th:text="movie.title">1</td>
-        <td th:text="movie.genre">2</td>
-        <td th:date="movie.date">3</td>
-        <td th:text="movie.length">4</td>
-        <td th:text="movie.actors">5</td>
-        <td th:text="movie.director">6</td>
-        <td th:text="movie.rating">7</td>
+        <td th:text="movie.id"></td>
+        <td th:text="movie.title"></td>
+        <td th:date="movie.overview"></td>
+        <td th:text="movie.popularity"></td>
     </tr>
     </tbody>
 </table>
