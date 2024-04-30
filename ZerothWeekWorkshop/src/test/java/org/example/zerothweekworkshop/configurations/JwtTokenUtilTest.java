@@ -1,5 +1,6 @@
 package org.example.zerothweekworkshop.configurations;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
@@ -23,18 +24,28 @@ class JwtTokenUtilTest {
     @SpyBean
     private JwtTokenUtil jwtTokenUtil;
 
+    private String username;
+    private String token;
+
+    @BeforeEach
+    void setUp() {
+        username = "testUser";
+        token = jwtTokenUtil.generateToken(username);
+    }
+
     @Test
     void testGenerateToken() {
-        String username = "testUser";
-        String token = jwtTokenUtil.generateToken(username);
         assertNotNull(token);
         assertEquals(username, jwtTokenUtil.extractUsername(token));
     }
 
     @Test
+    void testExtractUsername() {
+        assertEquals(username, jwtTokenUtil.extractUsername(token), "Extracted username should match the original.");
+    }
+
+    @Test
     void testTokenExpiration() {
-        String username = "testUser";
-        String token = jwtTokenUtil.generateToken(username);
         assertFalse(jwtTokenUtil.isTokenExpired(token));
 
         // Advance time by simulating time after token expiration
@@ -44,6 +55,4 @@ class JwtTokenUtilTest {
 
         assertTrue(jwtTokenUtil.isTokenExpired(token));
     }
-
-
 }
