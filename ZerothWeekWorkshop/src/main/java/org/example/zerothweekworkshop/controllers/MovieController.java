@@ -44,6 +44,7 @@ public class MovieController {
                     // Assuming you have a method to process and store the data
                     processAndStoreMovies(movieDTO.getResults());
                     deferredResult.setResult(ResponseEntity.ok(response.body().getResults()));
+                    // save the popular list
                 } else {
                     deferredResult.setErrorResult(ResponseEntity.status(response.code()).body("Failed to fetch data with code: " + response.code()));
                 }
