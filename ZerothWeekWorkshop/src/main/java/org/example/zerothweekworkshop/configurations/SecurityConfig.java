@@ -42,7 +42,9 @@ public class SecurityConfig {
                                 "/login",
                                 "/addNewUser",
                                 "/generateToken",
+                                "/signup",
                                 "/user/movies/popular"
+
                         ).permitAll()
                         .requestMatchers("/user/**").authenticated()
                         .requestMatchers("/admin/**").authenticated()
