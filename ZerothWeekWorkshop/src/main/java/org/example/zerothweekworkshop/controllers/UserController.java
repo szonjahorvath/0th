@@ -1,6 +1,5 @@
 package org.example.zerothweekworkshop.controllers;
 
-
 import org.example.zerothweekworkshop.models.User;
 import org.example.zerothweekworkshop.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +8,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.example.zerothweekworkshop.models.Movie;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class UserController {
@@ -27,6 +28,13 @@ public class UserController {
         user.setRoles("ROLE_USER");
         userService.addUser(user);
         return "redirect:/login";
+
+    @PostMapping("/{id}/savePreference")
+    public String savePreferences(@ModelAttribute Movie movieToSave) {
+        if (movieToSave!=null) {
+     //       userService.saveMovies();
+        }
+        return "index";
     }
 
 }

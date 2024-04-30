@@ -2,15 +2,15 @@ package org.example.zerothweekworkshop.models;
 
 import jakarta.persistence.*;
 import lombok.*;
-import java.util.List;
 
+@Setter
+@Getter
 @Entity
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Movie {
-    @Getter
-    @Setter
+@Table(name = "`user_preferences`")
+public class UserPreferences {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -18,11 +18,7 @@ public class Movie {
     private String overview;
     private float popularity;
 
-//    public Movie(int id, String title, String overview, float popularity) {
-//        this.id = id;
-//        this.title = title;
-//        this.overview = overview;
-//        this.popularity = popularity;
-//
-//    }
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
 }
