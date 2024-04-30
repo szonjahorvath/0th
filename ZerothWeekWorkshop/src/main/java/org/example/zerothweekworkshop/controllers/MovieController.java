@@ -1,6 +1,7 @@
 package org.example.zerothweekworkshop.controllers;
 
 import org.example.zerothweekworkshop.dto.MovieDTO;
+import org.example.zerothweekworkshop.models.Movie;
 import org.example.zerothweekworkshop.services.MovieService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -13,6 +14,9 @@ import org.springframework.web.context.request.async.DeferredResult;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @RestController
 @RequestMapping("/user/movies")
