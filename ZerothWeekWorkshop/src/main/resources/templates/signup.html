@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/static/styles/signup.css}">
+    <title>Movie Web App - Signup page</title>
+</head>
+<body>
+<div th:if="${param.error}">
+    Invalid username and password.
+</div>
+<p>Please fill this form to create an account.</p>
+<form action="/signup" method="post" th:object="${user}">
+    <div><label> User Name : <input type="text" name="username" placeholder="Your username" th:field="*{name}" required/> </label></div>
+    <div><label> Password: <input type="password" name="password" placeholder="Enter Password" th:field="*{password}" required/> </label></div>
+    <div><input type="submit" value="Sign Up"/></div>
+</form>
+
+
+</body>
+</html>

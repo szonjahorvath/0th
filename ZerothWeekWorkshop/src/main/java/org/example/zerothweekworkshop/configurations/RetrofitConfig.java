@@ -24,7 +24,6 @@ public class RetrofitConfig {
             Request original = chain.request();
             // Suppose every request requires an API key as a query parameter
             Request request = original.newBuilder()
-                    .url(original.url().newBuilder().addQueryParameter("api_key", "your_api_key_here").build())
                     .build();
             return chain.proceed(request);
         });
