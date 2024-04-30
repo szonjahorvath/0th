@@ -29,12 +29,12 @@ public class UserController {
         userService.addUser(user);
         return "redirect:/login";
 
-    @PostMapping("/{id}/savePreference")
-    public String savePreferences(@ModelAttribute Movie movieToSave) {
-        if (movieToSave!=null) {
-     //       userService.saveMovies();
-        }
-        return "index";
+//    @PostMapping("/{id}/savePreference")
+//    public String savePreferences(@ModelAttribute Movie movieToSave) {
+//        if (movieToSave!=null) {
+//     //       userService.saveMovies();
+//        }
+//        return "index";
     }
 
 }
