@@ -10,6 +10,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.SpyBean;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import java.security.Key;
 import java.util.Date;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -47,6 +48,13 @@ class JwtTokenUtilTest {
 
         String usernameFromToken = jwtTokenUtil.extractUsername(token);
         assertEquals(username, usernameFromToken, "Extracted username should match the one provided");
+    }
+
+    @Test
+    void testGetSignKey() {
+        Key key = jwtTokenUtil.getSignKey();
+        assertNotNull(key, "Signing key should not be null.");
+        assertEquals("HmacSHA256", key.getAlgorithm(), "Expected algorithm is HmacSHA256.");
     }
 
     @Test

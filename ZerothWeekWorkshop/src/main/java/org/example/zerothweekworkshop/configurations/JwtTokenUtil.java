@@ -35,7 +35,7 @@ public class JwtTokenUtil {
                 .signWith(getSignKey(), SignatureAlgorithm.HS256).compact();
     }
 
-    private Key getSignKey() {
+    Key getSignKey() {
         byte[] keyBites = Decoders.BASE64.decode(secretKey);
         return Keys.hmacShaKeyFor(keyBites);
     }
@@ -62,7 +62,7 @@ public class JwtTokenUtil {
                 .getBody();
     }
 
-    protected boolean isTokenExpired(String token) {
+    boolean isTokenExpired(String token) {
         return extractExpiration(token).before(getCurrentTime());
     }
 
@@ -71,7 +71,7 @@ public class JwtTokenUtil {
         return (username.equals(userDetails.getUsername())) && !isTokenExpired(token);
     }
 
-    protected Date getCurrentTime() {
+    Date getCurrentTime() {
         return new Date();
     }
 }
