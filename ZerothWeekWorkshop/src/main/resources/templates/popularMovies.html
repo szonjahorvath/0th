@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Popular Movies</title>
+</head>
+<body>
+<h1>List of Popular Movies</h1>
+<ul>
+
+    <li th:each="movie : ${movies}">
+        <h2 th:text="${movie.title}"></h2>
+        <p th:text="${movie.overview}"></p>
+        <p>Popularity: <span th:text="${movie.popularity}"></span></p>
+    </li>
+</ul>
+
+
+</body>
+</html>
