@@ -72,7 +72,6 @@ public class JwtTokenUtil {
         return (username.equals(userDetails.getUsername())) && !isTokenExpired(token);
     }
 
-    // Method to allow injection clock for testing (expiration)
     protected Date getCurrentTime() {
         return new Date();
     }
