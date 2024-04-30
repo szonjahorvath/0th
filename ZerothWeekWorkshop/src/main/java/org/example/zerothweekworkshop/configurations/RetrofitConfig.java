@@ -22,8 +22,8 @@ public class RetrofitConfig {
         httpClient.addInterceptor(logging);
         httpClient.addInterceptor(chain -> {
             Request original = chain.request();
-            // Suppose every request requires an API key as a query parameter
             Request request = original.newBuilder()
+                    .url(original.url().newBuilder().build())
                     .build();
             return chain.proceed(request);
         });
