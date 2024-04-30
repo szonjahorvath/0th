@@ -15,9 +15,6 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-import java.util.ArrayList;
-import java.util.List;
-
 @RestController
 @RequestMapping("/user/movies")
 public class MovieController {
@@ -39,7 +36,8 @@ public class MovieController {
                 if (response.isSuccessful() && response.body() != null) {
                     model.addAttribute("movies", response.body().getResults());  // added line
         // earlier solution: deferredResult.setResult(ResponseEntity.ok(response.body().getResults()));
-                    deferredResult.setResult(ResponseEntity.ok("popularMovies"));
+                    deferredResult.setResult(ResponseEntity.ok("popularMovies")); // added line
+                    //   deferredResult.setResult("popularMovies"); // added line
                 } else {
                     deferredResult.setErrorResult(ResponseEntity.status(response.code()).body("Failed to fetch data with code: " + response.code()));
                 }
