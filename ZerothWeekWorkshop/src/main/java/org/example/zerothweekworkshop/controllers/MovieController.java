@@ -7,6 +7,7 @@ import org.example.zerothweekworkshop.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -31,7 +32,7 @@ public class MovieController {
     private String apiKey;
 
     @GetMapping("/popular")
-    public DeferredResult<ResponseEntity<?>> getPopularMovies() {
+    public DeferredResult<ResponseEntity<?>> getPopularMovies(Model model) {
         DeferredResult<ResponseEntity<?>> deferredResult = new DeferredResult<>();
 
         Call<MovieDTO> call = movieService.getPopularMovies(apiKey);
@@ -44,7 +45,6 @@ public class MovieController {
                     // Assuming you have a method to process and store the data
                     processAndStoreMovies(movieDTO.getResults());
                     deferredResult.setResult(ResponseEntity.ok(response.body().getResults()));
-                    // save the popular list
                 } else {
                     deferredResult.setErrorResult(ResponseEntity.status(response.code()).body("Failed to fetch data with code: " + response.code()));
                 }
