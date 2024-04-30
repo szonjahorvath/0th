@@ -17,8 +17,4 @@ public class Movie {
     private String title;
     private String overview;
     private float popularity;
-
-    @OneToMany(mappedBy = "movie", cascade = CascadeType.ALL)
-    private List<UserPreferences> userPreferences;
-
 }

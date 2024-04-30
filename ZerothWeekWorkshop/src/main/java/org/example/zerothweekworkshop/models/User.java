@@ -6,6 +6,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Entity
 @Data
 @AllArgsConstructor
@@ -19,4 +21,7 @@ public class User {
     private String name;
     private String password;
     private String roles;
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private List<UserPreferences> userPreferences;
 }

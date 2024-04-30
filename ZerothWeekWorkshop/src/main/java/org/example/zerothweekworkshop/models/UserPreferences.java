@@ -14,8 +14,11 @@ public class UserPreferences {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    private String title;
+    private String overview;
+    private float popularity;
 
     @ManyToOne
-    @JoinColumn(name = "movie_id")
-    private Movie movie;
+    @JoinColumn(name = "user_id")
+    private User user;
 }

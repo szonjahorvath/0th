@@ -28,6 +28,13 @@
         <td th:text="movie.actors">5</td>
         <td th:text="movie.director">6</td>
         <td th:text="movie.rating">7</td>
+        <!--
+        <td>
+            <form th:action="@{/user/{id}/savePreference(id=${movie.getId()})}">
+                <button type="submit">Save in favourites</button>
+            </form>
+        </td>
+        -->
     </tr>
     <tr th:each="movie : ${movies}">
         <td th:text="movie.title">1</td>
@@ -44,6 +51,11 @@
 <form th:action="@{/logout}" method="post">
     <input type="submit" value="Sign out"/>
 </form>
-
+<!--
+insert in loop and correct syntax
+<form th:action="@{/user/savePreference}" method="post">
+    <input type="submit" value="Save in favourites"/>
+</form>
+-->
 </body>
 </html>
