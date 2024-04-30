@@ -40,6 +40,16 @@ class JwtTokenUtilTest {
     }
 
     @Test
+    void testCreateToken() {
+        // Testing createToken indirectly using generateToken()
+        assertNotNull(token, "Token should not be null");
+        assertEquals(3, token.split("\\.").length, "JWT should have 3 parts separated by dots.");
+
+        String usernameFromToken = jwtTokenUtil.extractUsername(token);
+        assertEquals(username, usernameFromToken, "Extracted username should match the one provided");
+    }
+
+    @Test
     void testExtractUsername() {
         assertEquals(username, jwtTokenUtil.extractUsername(token), "Extracted username should match the original.");
     }
