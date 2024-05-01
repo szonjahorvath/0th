@@ -1,5 +1,6 @@
 package org.example.zerothweekworkshop.controllers;
 
+import org.example.zerothweekworkshop.services.MovieService;
 import org.example.zerothweekworkshop.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -12,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class MainController {
 
     @Autowired
-    private UserService userService;
+    private MovieService movieService;
 
     @GetMapping("/")
     public String mainPage(@RequestParam(value = "logout", required = false) String logout) {
@@ -21,8 +22,7 @@ public class MainController {
 
     @GetMapping("/user/content")
     public String content(Model model) {
-        model.addAttribute("movies", userService.loadMovies());
-        System.out.println(userService.loadMovies().toString());
+        model.addAttribute("movies", movieService.getMovieList());
         return "content";
     }
 

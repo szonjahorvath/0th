@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
 <head>
-    <link rel="stylesheet" href="/static/styles/content.css" >
+    <link rel="stylesheet" href="/static/styles/content.css">
     <title>Movie Web App - Content</title>
 </head>
 <body>
@@ -23,7 +23,11 @@
         <td th:text="${movie.title}"></td>
         <td th:text="${movie.overview}"></td>
         <td th:text="${movie.popularity}"></td>
-
+        <td>
+            <form th:action="@{/user/{id}/savePreference(id=${movie.getId()})}" method="post">
+                <input type="submit" value="Save in favourites"/>
+            </form>
+        </td>
     </tr>
     </tbody>
 </table>
@@ -31,12 +35,5 @@
 <form th:action="@{/logout}" method="post">
     <input type="submit" value="Sign out"/>
 </form>
-
-<!--
-insert in loop and correct syntax
-<form th:action="@{/user/savePreference}" method="post">
-    <input type="submit" value="Save in favourites"/>
-</form>
--->
 </body>
 </html>

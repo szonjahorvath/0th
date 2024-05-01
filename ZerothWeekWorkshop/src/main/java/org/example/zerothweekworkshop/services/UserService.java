@@ -23,8 +23,6 @@ public class UserService implements UserDetailsService {
     @Autowired
     private PasswordEncoder encoder;
 
-    private List<Movie> movieList = new ArrayList<>();
-
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         Optional<User> userDetail = repository.findByName(username);
@@ -40,12 +38,5 @@ public class UserService implements UserDetailsService {
         return "User Added Successfully";
     }
 
-    //method saveMovies to handle storing movies in our database.
-    public void saveMovies(List<Movie> movies) {
-        this.movieList = movies;
-    }
 
-    public List<Movie> loadMovies(){
-        return movieList;
-    }
 }

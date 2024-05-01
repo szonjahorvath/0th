@@ -50,7 +50,8 @@ public class SecurityConfig {
                                 "/login",
                                 "/addNewUser",
                                 "/generateToken",
-                                "/user/movies/popular"
+                                "/user/movies/popular",
+                                "/user/savePreference"
                         ).permitAll()
                         .requestMatchers("/user/**").authenticated()
                         .requestMatchers("/admin/**").authenticated()

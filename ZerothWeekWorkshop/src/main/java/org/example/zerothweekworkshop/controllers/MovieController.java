@@ -25,8 +25,6 @@ public class MovieController {
     @Autowired
     private MovieService movieService;
 
-    @Autowired
-    private UserService userService;
 
     @Value("${tmdb.api.key}")
     private String apiKey;
@@ -40,10 +38,9 @@ public class MovieController {
             @Override
             public void onResponse(Call<MovieDTO> call, Response<MovieDTO> response) {
                 if (response.isSuccessful() && response.body() != null) {
-                    // Process the data received from the API
-                    MovieDTO movieDTO = response.body();
-                    // Assuming you have a method to process and store the data
-                    processAndStoreMovies(movieDTO.getResults());
+                    // redirect movies to movieService
+                    movieService.setMovieList(response.body().getResults());
+                    //movieService.saveAllMovies(response.body().getResults()); error in saving because some fields are too long for db settings
                     deferredResult.setResult(ResponseEntity.ok(response.body().getResults()));
                 } else {
                     deferredResult.setErrorResult(ResponseEntity.status(response.code()).body("Failed to fetch data with code: " + response.code()));
@@ -57,10 +54,5 @@ public class MovieController {
         });
 
         return deferredResult;
-    }
-
-    // Method to process and store movies in MovieService
-    private void processAndStoreMovies(List<Movie> movies) {
-        userService.saveMovies(movies);
     }
 }
