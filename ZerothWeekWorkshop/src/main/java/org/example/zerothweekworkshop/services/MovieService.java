@@ -10,6 +10,7 @@ import retrofit2.Retrofit;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class MovieService {
@@ -41,12 +42,16 @@ public class MovieService {
         Movie preferredMovie = new Movie();
         preferredMovie.setTitle(movie.getTitle());
         preferredMovie.setPopularity(movie.getPopularity());
-        preferredMovie.setOverview(movie.getOverview());
+    //    preferredMovie.setOverview(movie.getOverview());
         movieRepository.save(preferredMovie);
     }
 
     public void saveAllMovies(List<Movie> results) {
         movieList = results;
         movieRepository.saveAll(movieList);
+    }
+
+    public Optional<Movie> findMovieById(Long id){
+       return movieRepository.findById(id);
     }
 }

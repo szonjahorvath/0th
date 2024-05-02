@@ -8,9 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.context.request.async.DeferredResult;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -38,9 +36,11 @@ public class MovieController {
             @Override
             public void onResponse(Call<MovieDTO> call, Response<MovieDTO> response) {
                 if (response.isSuccessful() && response.body() != null) {
-                    // redirect movies to movieService
+                    // redirect movies to movieService, could be removed from here
                     movieService.setMovieList(response.body().getResults());
-                    //movieService.saveAllMovies(response.body().getResults()); error in saving because some fields are too long for db settings
+                    movieService.saveAllMovies(response.body().getResults());
+                    //overview field too small for the data that we get from dbMovies,
+                    // overview field temporary commented everywhere
                     deferredResult.setResult(ResponseEntity.ok(response.body().getResults()));
                 } else {
                     deferredResult.setErrorResult(ResponseEntity.status(response.code()).body("Failed to fetch data with code: " + response.code()));
@@ -55,4 +55,5 @@ public class MovieController {
 
         return deferredResult;
     }
+
 }

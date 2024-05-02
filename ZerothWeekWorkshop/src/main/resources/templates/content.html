@@ -21,10 +21,12 @@
 
         <td th:text="${movie.id}"></td>
         <td th:text="${movie.title}"></td>
+    <!--
         <td th:text="${movie.overview}"></td>
+        -->
         <td th:text="${movie.popularity}"></td>
         <td>
-            <form th:action="@{/user/{id}/savePreference(id=${movie.getId()})}" method="post">
+            <form th:action="@{/user/content/{id}/savePreference(id=${movie.getId()})}" method="post">
                 <input type="submit" value="Save in favourites"/>
             </form>
         </td>

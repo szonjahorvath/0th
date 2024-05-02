@@ -15,7 +15,7 @@ public class Movie {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String title;
-    private String overview;
+   // private String overview;
     private float popularity;
 
 //    public Movie(int id, String title, String overview, float popularity) {

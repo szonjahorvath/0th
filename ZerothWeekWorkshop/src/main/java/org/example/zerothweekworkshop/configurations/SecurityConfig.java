@@ -51,7 +51,7 @@ public class SecurityConfig {
                                 "/addNewUser",
                                 "/generateToken",
                                 "/user/movies/popular",
-                                "/user/savePreference"
+                                "/user/content/{id}/savePreference" // doesn't get authorization
                         ).permitAll()
                         .requestMatchers("/user/**").authenticated()
                         .requestMatchers("/admin/**").authenticated()
